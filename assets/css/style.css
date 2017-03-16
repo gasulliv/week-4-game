@@ -1,0 +1,70 @@
+<style>
+		@font-face {
+    		font-family: 'augustaregular';
+    		src: url('../fonts/augusta/augusta-webfont.woff2') format('woff2'),
+         	url('../fonts/augusta/augusta-webfont.woff') format('woff');
+    		font-weight: normal;
+    		font-style: normal;
+
+		}
+
+		@font-face {
+    		font-family: 'roboto_slablight';
+    		src: url('../fonts/slab/robotoslab-light-webfont.woff2') format('woff2'),
+         	url('../fonts/slab/robotoslab-light-webfont.woff') format('woff');
+    		font-weight: normal;
+    		font-style: normal;
+
+		}
+
+		.container-fluid {
+			font-family: "roboto_slablight", "times","times new roman";
+			background-image: url("../images/wpmd.jpg");
+			color:black;
+		}
+
+		h1 {
+			font-family: "roboto_slablight";
+			font-size: 45px;
+			opacity: .9;
+		}
+		.card {
+			width: 200px;
+			height:320px;
+		}
+
+		#player-score {
+			text-align: center;
+			margin-left: 10px;
+			margin-top: 30px;
+			background-color: white;
+			opacity: .3;
+			box-shadow: 5px 5px 5px black;
+			padding-bottom: 6px;
+			padding-top: 6px;
+		}
+		.rules-box {
+			margin-top: 80px;
+			margin-bottom: 10px;
+			background-color: white;
+			opacity: .3;
+			box-shadow: 5px 5px 5px black;
+			padding-bottom: 10px;
+			padding-top: 10px;
+		}
+
+		.hero {
+			width: 190px;
+			height:320px;
+			margin-top: 40px;
+			margin-left: 100px;
+			border-radius: 3%;
+			box-shadow: 5px 5px 5px black;
+		}
+
+		.header-box {
+			color:white;
+			opacity: .4%;
+		}
+
+	</style>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<link rel = "stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+	<div class = "container-fluid">
+		<div class = ".row">
+			<div class = "col-md-12">
+				<div class = "header-box">
+					<h1 class = "text-center">Tarot Card Collector</h1>
+				</div>
+			</div>
+		</div>
+		<div class = ".row">
+			<div class = "col-md-12"></div>
+				<div class = "rules-box">
+					<p class="text-center">You will be given a random number at the beginning of the game.<br> There are four cards below, clicking on each adds a hidden amount of points to your total score.<br>If your score matches that of your random number, then you win but if it goes over the random number then you lose!<br>Each time the game starts the tarot values change.</p><h3 class="text-center">Number to Guess: <span id="targetNumber"></span></h3>
+				</div>
+			</div>
+		<div class = ".row">
+			<div class = "col-md-12">
+				<div class="numtoguess">
+				</div>
+			</div>
+		<div class = ".row">
+			<div class = "col-sm-12">
+				<div id="heroDiv"></div>
+				</div>
+			</div>
+		</div>
+			<div class="row">
+				<div class = "col-sm-12">
+						<div id="player-score"><h3><span id ="score"></span></h3>
+						<p>Wins:<span id = "wins"></span></p><p>Losses:<span id = "losses"></span><p>
+						</div>
+					</div>
+				</div>
+			</div>
+	<audio id = "my_audio" src="assets/music/Omen.mp3" loop="loop">
+</body>
+
+<!-- Here we added a link to the jQuery library -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+<script type="text/javascript">
+
+	//adding music
+
+    $("#my_audio").get(0).play();
+    $("#my_audio").prop("volume", 0.1);
+
+	//alert("Your code still works!");
+
+	//set the variable for the counter
+	var counter = 0;
+
+	// set the number to find
+	//create a string to put it in
+	var targetNumber = "";
+
+	//make a for loop to generate 2 separate numbers
+
+	for (var i =0; i < 2; i++){
+		//for each iteration create a number between 1-9
+		var random = Math.floor(Math.random()* 9) + 1;
+
+		targetNumber = random + targetNumber;
+	}
+
+	//set the header to reflect the number to guess
+
+	$("#targetNumber").text(targetNumber);
+
+	//set the variables for the cards
+
+	var numberOptions = [2, 5, 3, 6];
+
+	// set a variable for wins and losses
+
+	var wins = 0;
+	var losses = 0;
+
+	//car picture array
+
+	var cardPics = ["assets/images/lady.jpg","assets/images/crow.jpg", "assets/images/hunter.jpg", "assets/images/annleese.jpg"];
+
+	// create a for loop that gives each card a unique value
+
+	for (var i = 0; i < numberOptions.length; i++){
+
+		//creates a new image tag
+		var imgCard = $("<img>");
+
+		//adds a class
+		imgCard.addClass("hero");
+
+		//adds the actual image array as an attribute
+		imgCard.attr("src",cardPics[i]);
+
+		//adds the attribute of data-card value to each image. This give each card a unique data value
+		imgCard.attr("data-cardvalue", numberOptions[i]);
+
+		//this appends the images to the screen
+		$("#heroDiv").append(imgCard);
+	}
+
+	//make an image clickable
+
+	$(".hero").click(function(){
+
+		//on click this selects the data value of the clicked card
+		var cardValue = ($(this).attr("data-cardvalue"));
+		//all html values are strings, so we need to make that string an integer
+		cardValue = parseInt(cardValue);
+		//set the counter equal to the card value
+		counter += cardValue;
+		//displays your score
+		$("#score").text("Your score: " + counter);
+
+		if (counter === targetNumber){
+			wins++;
+			$("#wins").html(wins);
+			window.location.reload();
+			}
+
+		else if (counter > targetNumber){
+			losses++;
+			$("#losses").html(losses);
+			window.location.reload();
+		}
+	});
+
+</script>
